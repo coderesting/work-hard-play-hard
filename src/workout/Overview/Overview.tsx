@@ -4,7 +4,6 @@ import { useState } from "react";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 import useStyles from "./OverviewStyles";
-import { getCurrentDate } from "../helper";
 import { User } from "./types";
 import { UserDetail } from "./UserDetail/UserDetail";
 import { ClassNameMap } from "@material-ui/styles";
@@ -32,15 +31,11 @@ function getStatusHTML(
 export function Overview(props: { users: User[] }) {
 	const classes = useStyles();
 	const [detailedUser, setDetailedUser] = useState<User | null>(null);
-	const currentTimestamp = getCurrentDate().getTime();
 
 	return (
 		<Box display="flex" justifyContent="space-around" position="relative">
 			{props.users.map((user) => {
-				const statusHTML = getStatusHTML(
-					classes,
-					user.workouts?.[currentTimestamp]
-				);
+				const statusHTML = getStatusHTML(classes, user.status);
 				const opacity = detailedUser
 					? detailedUser.id === user.id
 						? 1
