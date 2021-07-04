@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	chip: {
 		zIndex: 11,
+		transition: "0.2s ease",
 	},
 }));
 

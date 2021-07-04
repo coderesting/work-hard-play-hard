@@ -36,14 +36,14 @@ export function Overview(props: { users: User[] }) {
 		<Box display="flex" justifyContent="space-around" position="relative">
 			{props.users.map((user) => {
 				const statusHTML = getStatusHTML(classes, user.status);
-				const opacity = detailedUser
+				const border = detailedUser
 					? detailedUser.id === user.id
-						? 1
-						: 0.7
-					: 1;
+						? "#eee"
+						: "transparent"
+					: "transparent";
 				return (
 					<Chip
-						style={{ opacity }}
+						style={{ border: `2px solid ${border}` }}
 						className={classes.chip}
 						key={user.id}
 						label={user.name}

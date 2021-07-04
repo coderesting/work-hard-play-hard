@@ -25,6 +25,11 @@ const theme = createMuiTheme({
 			deleteIconColorPrimary: {
 				color: "white",
 			},
+			deletableColorPrimary: {
+				"&:focus": {
+					backgroundColor: "#1976D2",
+				},
+			},
 		},
 		MuiTableCell: {
 			root: {
