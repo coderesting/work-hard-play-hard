@@ -23,16 +23,25 @@ export function parseWorkouts(workouts: Workouts | null) {
 		const endDate = getCurrentDate();
 		endDate.setHours(6, 0, 0, 0);
 
+		let usedRestDay = false;
 		//replay
-		while (replayDate.getTime() < endDate.getTime()) {
+		while (replayDate.getTime() <= endDate.getTime()) {
+			const currentDay = replayDate.getTime() === endDate.getTime();
 			const status = workouts[replayDate.getTime()];
-			if (!status || (status > 0 && status < 4)) missed++;
-			if (status === "joker") joker--;
-			if (replayDate.getDay() === 1 && joker <= 5) joker++;
 
+			// if monday
+			if (replayDate.getDay() === 1) {
+				if (joker <= 5) joker++;
+				usedRestDay = false;
+			}
+			if (status === "joker") joker--;
+
+			if (!status || (status > 0 && status < 4)) {
+				if (usedRestDay && !currentDay) missed++;
+				else usedRestDay = true;
+			}
 			replayDate.setTime(replayDate.getTime() + 24 * 60 * 60 * 1000); // add 24h
 		}
-		if (workouts[endDate.getTime()] === "joker") joker--;
 	}
 	return {
 		joker,
