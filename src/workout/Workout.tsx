@@ -33,7 +33,7 @@ export function Workout(props: { userId: string; fireConfetti: () => void }) {
 		setUsers(newUsers);
 	};
 
-	const user: User | null = users[0];
+	const user: User | null = users.filter((user) => user.id === props.userId)[0];
 
 	return (
 		<Box
