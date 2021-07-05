@@ -36,7 +36,7 @@ export function parseWorkouts(workouts: Workouts | null) {
 			}
 			if (status === "joker") joker--;
 
-			if (!status || (status > 0 && status < 4)) {
+			if (!status || (status >= 0 && status < 4)) {
 				if (usedRestDay && !currentDay) missed++;
 				else usedRestDay = true;
 			}
