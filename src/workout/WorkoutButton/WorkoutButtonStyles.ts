@@ -21,6 +21,7 @@ export const useStyles = makeStyles((theme) => ({
 		animation: `$breathe 3s ${theme.transitions.easing.easeInOut} infinite`,
 		zIndex: 1,
 		userSelect: "none",
+		tapHighlightColor: "rgba(255, 255, 255, 0)",
 		"&:disabled": {
 			opacity: 0.5,
 			animation: "none",
