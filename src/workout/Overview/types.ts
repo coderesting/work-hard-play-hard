@@ -22,4 +22,5 @@ export interface User {
 	status: string | number;
 	joker: number;
 	missed: number;
+	usedRestDay: boolean;
 }
