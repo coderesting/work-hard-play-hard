@@ -33,6 +33,12 @@ export function UserDetail(props: { user: User | null; close: any }) {
 							<TableCell>Missed days</TableCell>
 							<TableCell align="right">{props.user?.missed}€</TableCell>
 						</TableRow>
+						<TableRow>
+							<TableCell>Used rest day</TableCell>
+							<TableCell align="right">
+								{props.user?.usedRestDay ? "Yes" : "No"}
+							</TableCell>
+						</TableRow>
 					</TableBody>
 				</Table>
 			</TableContainer>
