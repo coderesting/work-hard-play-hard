@@ -10,7 +10,10 @@ export function App() {
 	const classes = useStyles();
 	const [userId, setUserId] = useState<string | null>(null);
 	const [confetti, setConfetti] = useState<object>({});
-	const fireConfetti = () => setConfetti({});
+	const fireConfetti = () => {
+		setConfetti({});
+		if (window.navigator.vibrate) window.navigator.vibrate(300);
+	};
 
 	return (
 		<>

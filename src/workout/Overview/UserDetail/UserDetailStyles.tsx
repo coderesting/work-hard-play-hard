@@ -2,13 +2,16 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
 	userDetail: {
-		padding: 20,
-		paddingTop: 60,
+		display: "grid",
+		gridTemplateRows: "auto auto",
 		position: "absolute",
-		width: "100%",
 		top: -10,
+		width: "100%",
+		height: "50vh",
+		minHeight: 250,
+		padding: "60px 20px 5px 20px",
 		zIndex: 10,
-		transition: "0.3s ease",
+		transition: "0.4s ease",
 	},
 	backdrop: { zIndex: 9 },
 }));
