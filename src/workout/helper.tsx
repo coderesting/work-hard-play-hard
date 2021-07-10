@@ -1,5 +1,8 @@
 import { getDatabase, ref, set } from "firebase/database";
 import { Workouts } from "./Overview/types";
+import DoneIcon from "@material-ui/icons/Done";
+import SkipNextIcon from "@material-ui/icons/SkipNext";
+import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 
 export function getCurrentDate() {
 	const currentDay = new Date();
@@ -18,6 +21,7 @@ export function parseWorkouts(workouts: Workouts | null) {
 	let joker = 0;
 	let missed = 0;
 	let usedRestDay = false;
+	let timeline = [];
 
 	if (workouts) {
 		const replayDate = new Date("2021-07-05T06:00:00");
@@ -40,6 +44,11 @@ export function parseWorkouts(workouts: Workouts | null) {
 				if (usedRestDay) missed++;
 				else usedRestDay = true;
 			}
+
+			timeline.push({
+				date: replayDate.toLocaleDateString(),
+				status,
+			});
 			replayDate.setTime(replayDate.getTime() + 24 * 60 * 60 * 1000); // add 24h
 		}
 	}
@@ -47,5 +56,26 @@ export function parseWorkouts(workouts: Workouts | null) {
 		joker,
 		missed,
 		usedRestDay,
+		timeline,
 	};
+}
+
+export function getStatusHTML(
+	status: string | number,
+	workoutNumberClass?: string
+) {
+	switch (status) {
+		case 1:
+		case 2:
+		case 3:
+			return <span className={workoutNumberClass}>{status}</span>;
+		case 4:
+			return <DoneIcon />;
+		case "joker":
+			return <SkipNextIcon />;
+		case "health":
+			return <LocalHospitalIcon />;
+		default:
+			return <span className={workoutNumberClass}>0</span>;
+	}
 }

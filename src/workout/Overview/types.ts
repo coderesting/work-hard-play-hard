@@ -23,4 +23,5 @@ export interface User {
 	joker: number;
 	missed: number;
 	usedRestDay: boolean;
+	timeline: { date: string; status: string | number | null }[];
 }
