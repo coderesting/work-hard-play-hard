@@ -24,7 +24,7 @@ export function parseWorkouts(workouts: Workouts | null) {
 	let timeline = [];
 
 	if (workouts) {
-		const replayDate = new Date("2021-07-05T06:00:00");
+		const replayDate = new Date("2021-07-12T06:00:00");
 		const endDate = getCurrentDate();
 		endDate.setHours(6, 0, 0, 0);
 
