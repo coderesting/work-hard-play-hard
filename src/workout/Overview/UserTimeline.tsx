@@ -1,7 +1,6 @@
 import { User } from "./types";
 import {
 	Box,
-	Paper,
 	Table,
 	TableBody,
 	TableCell,
@@ -12,7 +11,7 @@ import { getStatusHTML } from "../helper";
 
 export function UserTimeline(props: { user: User | null }) {
 	return (
-		<TableContainer component={Paper}>
+		<TableContainer>
 			<Table>
 				<TableBody>
 					{props.user?.timeline.map((day) => (
