@@ -8,7 +8,7 @@ export function getCurrentDate() {
 	const currentDay = new Date()
 	if (currentDay.getHours() <= 6)
 		currentDay.setTime(currentDay.getTime() - 24 * 60 * 60 * 1000) // subtract 1 day
-	currentDay.setHours(6, 0, 0, 0)
+	currentDay.setUTCHours(6 - 2, 0, 0, 0) // Subtract two hours for existing german times in database
 	return currentDay
 }
 
@@ -26,7 +26,6 @@ export function parseWorkouts(workouts: Workouts | null) {
 	if (workouts) {
 		const replayDate = new Date('2021-07-12T06:00:00+02:00')
 		const endDate = getCurrentDate()
-		endDate.setHours(6, 0, 0, 0)
 
 		//replay
 		while (replayDate.getTime() <= endDate.getTime()) {
