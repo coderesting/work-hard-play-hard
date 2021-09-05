@@ -6,9 +6,9 @@ import LocalHospitalIcon from '@material-ui/icons/LocalHospital'
 
 export function getCurrentDate() {
 	const currentDay = new Date()
-	if (currentDay.getHours() <= 6)
+	if (currentDay.getHours() < 6)
 		currentDay.setTime(currentDay.getTime() - 24 * 60 * 60 * 1000) // subtract 1 day
-	currentDay.setUTCHours(6 - 2, 0, 0, 0) // Subtract two hours for existing german times in database
+	currentDay.setHours(4 - currentDay.getTimezoneOffset() / 60, 0, 0, 0) // Timezone magic
 	return currentDay
 }
 
