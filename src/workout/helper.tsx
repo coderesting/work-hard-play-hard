@@ -9,7 +9,7 @@ export function getCurrentDate() {
 	if (currentDay.getHours() < 6)
 		currentDay.setTime(currentDay.getTime() - 24 * 60 * 60 * 1000) // subtract 1 day
 	currentDay.setHours(4 - currentDay.getTimezoneOffset() / 60, 0, 0, 0) // Timezone magic
-	return currentDay
+	return new Date('2021-09-30T06:00:00+02:00')
 }
 
 export function setCurrentWorkoutStatus(id: string, value: string | number) {
